@@ -1,0 +1,40 @@
+<div class="container">
+<!-- LOBBY OF GAMES WAITING -->
+  <div id="refresh_available_games">
+      <h3> Available games </h3>
+      <table class="table" id="waiting_games">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Player 2 Status</th>
+            <th>Join Game</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @games.each do |game| %>
+            <tr>
+              <th><%= game.find_player_one(game.id) %></th>
+              <th> Still waiting ... </th>
+              <th>
+                <a id="join_game" href="/game/<%= game.id %>">Join game</a>
+              </th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <button class="btn btn-default" id="create_game">Create New Game</button>
+  </div>
+
+<!-- USER'S SCOREBOARD-->
+  <div>
+  </div>
+
+<!-- OVERALL SCOREBOARD -->
+  <div>
+  </div>
+
+
+</div>
+
+

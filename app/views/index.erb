@@ -1,23 +1,39 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+  
+  <button class="btn btn-default" id="log_in">Log In</button>
+  <button class="btn btn-default" id="register">Register</button>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+  <div id="index">
+
+    <form id="log_in" role="form" method="post" action="/log_in">
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="text" name="email" class="form-control" placeholder="Your email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password: </label>
+        <input type="password" name="password" class="form-control" placeholder="Your password">
+      </div>
+      <input type="submit" value="Log In">
+    </form>
+
+    <form id="register" role="form" method="post" action="/register">
+      <div class="form-group">
+        <label for="name">Name: </label>
+        <input type="text" name="name" class="form-control" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="text" name="email" class="form-control" placeholder="Your email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password: </label>
+        <input type="password" name="password" class="form-control" placeholder="Your password">
+      </div>
+      <input type="submit" value="Register">
+    </form>
+  </div>
+
 </div>
+
+
