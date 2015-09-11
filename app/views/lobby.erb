@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="lobby">
 <!-- LOBBY OF GAMES WAITING -->
   <div id="refresh_available_games">
       <h3> Available games </h3>
@@ -16,7 +16,7 @@
               <th><%= game.find_player_one(game.id) %></th>
               <th> Still waiting ... </th>
               <th>
-                <a id="join_game" href="/game/<%= game.id %>">Join game</a>
+                <a id="join_game" href="/join_game/<%= game.id %>">Join game</a>
               </th>
             </tr>
           <% end %>

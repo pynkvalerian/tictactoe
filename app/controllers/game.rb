@@ -7,11 +7,13 @@ post '/create_game' do
 end
 
 # PLAYER TWO JOIN AVAILABLE GAME
-post '/join_game' do 
-	@game = Game.find(params[:game_id])
+get '/join_game/:id' do 
+	@game = Game.find(params[:id])
+	byebug
 	if @game.player_two_id.nil? 
-		if @game.player_one_id != session[:user_id] 
+		if session[:user_id] != @game.player_one_id
 			@game.player_two_id = session[:user_id]
+			byebug
 			@game.save
 			session[:game_id] = @game.id
 			redirect to("/game/#{@game.id}")
@@ -24,10 +26,32 @@ end
 # GAME PAGE
 get '/game/:id' do
 	@game = Game.find(params[:id])
-	# if session[:user_id] == @game.player_one_id
-
-	# elsif session[:user_id] == @game.player_two_id
-
-	# end
+	byebug
+	if session[:user_id] == @game.player_one_id
+		@player = "X"
+	elsif session[:user_id] == @game.player_two_id
+		@player = "O"
+	end
 erb :game_page
 end
+
+# CHECK IF PLAYER TWO IS IN 
+get '/check_player_two' do
+	game = Game.find(session[:game_id])
+	if game.player_two_id == nil?
+		return false
+	end
+end
+
+# MAKE A MOVE
+post '/move' do
+	position = params[:position]
+	move = Move.create(game_id: session[:game_id], user_id: session[:user_id], board_position: params[:position])
+end
+
+# CHECK IF THE OTHER PLAYER HAS MADE A MOVE
+
+
+
+
+

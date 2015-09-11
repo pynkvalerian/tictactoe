@@ -11,4 +11,10 @@ class Game < ActiveRecord::Base
   	return @user.name
   end
 
+  def find_player_two(game_id)
+  	game = Game.find(game_id)
+  	@user = User.find(game.player_two_id)
+  	return @user.name
+  end
+
 end
