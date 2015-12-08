@@ -1,19 +1,22 @@
 <div class="container" id="game_page">
 
+<% if @game.player_two_id == nil %>
 <!-- DISPLAY PENDING PLAYER TWO MESSAGE -->
   <div class="pending-player-two">
-    <% if @game.player_two_id == nil %>
     <h2>Waiting for player two ...</h2>
-    <% end %>
   </div>
+<% else %>
+  <div class="players_details">
+    <h5>Player 1: <%= @game.find_player_one(@game.id) %></h5>
+    <h5>Player 2: <%= @game.find_player_two(@game.id) %> </h5>
+  </div>
+  <div>
+    <h2 class='winner'></h2>
+  </div>
+<% end %>
 
 <!-- GAME BOARD -->
   <div class="btn btn-group btn-group-justified">
-
-    <div class="players_details">
-      <h5>Player 1: <%= @game.find_player_one(@game.id) %></h5>
-      <h5>Player 2: <%= @game.find_player_two(@game.id) %> </h5>
-    </div>
 
     <table class="table" id="game_board" data-player="<%= @player %>">
       <tbody>
